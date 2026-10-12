@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Ajoute budget_achats / objectif_ca dans Reglages, Parametres
+         generaux (data-key="general_settings"), a cote des autres
+         reglages generaux, plutot que de creer une nouvelle icone
+         d'application dediee dans Reglages : plus simple et fiable que
+         de gerer une categorie/icone d'app a part pour deux champs. -->
+    <record id="res_config_settings_view_form_camlait" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.camlait.dashboard</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="priority" eval="90"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Camlait Dashboard"
+                     string="Camlait Dashboard" data-key="general_settings">
+                    <h2>Tableau de bord Camlait</h2>
+                    <div class="row mt16 o_settings_container" name="camlait_dashboard_settings">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="camlait_budget_achats" string="Budget achats mensuel"/>
+                                <div class="text-muted">
+                                    Objectif utilisé par la carte "Budget achats consommé"
+                                    du tableau de bord Camlait.
+                                </div>
+                                <div class="content-group">
+                                    <field name="camlait_budget_achats"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="camlait_objectif_ca" string="Objectif de chiffre d'affaires mensuel"/>
+                                <div class="text-muted">
+                                    Objectif utilisé par la carte "Chiffre d'affaires"
+                                    du tableau de bord Camlait.
+                                </div>
+                                <div class="content-group">
+                                    <field name="camlait_objectif_ca"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
